@@ -1,7 +1,7 @@
 import { sendHttpRequest } from './util.js';
 
 const URL =
-	'https://gist.githubusercontent.com/al3xback/976e70112e603b704dd8192269594bd3/raw/7e6cba4f1155e39d1db005c4e2696db76b126929/four-card-data.json';
+	'https://gist.githubusercontent.com/al3xback/976e70112e603b704dd8192269594bd3/raw/1a76d3476ec82355ea21cb7d7704b7f7dc8fb26f/four-card-data.json';
 
 const sectionWrapperEl = document.querySelector('.section-wrapper');
 const sectionTemplate = document.getElementById('section-template');
@@ -28,8 +28,8 @@ const renderCardsContent = (data) => {
 	const { summary: cardsSummaryData, list: cardsListData } = JSON.parse(data);
 
 	const {
-		title: cardsSummaryTitle,
 		subtitle: cardsSummarySubtitle,
+		title: cardsSummaryTitle,
 		description: cardsSummaryDescription,
 	} = cardsSummaryData;
 
@@ -47,15 +47,15 @@ const renderCardsContent = (data) => {
 	const sectionHeadEl =
 		sectionHeadTemplateNode.querySelector('.section__head');
 
+	const cardsSummarySubtitleEl = sectionHeadEl.querySelector(
+		'.cards-summary__subtitle'
+	);
+	cardsSummarySubtitleEl.textContent = cardsSummarySubtitle;
+
 	const cardsSummaryTitleEl = sectionHeadEl.querySelector(
 		'.cards-summary__title'
 	);
 	cardsSummaryTitleEl.textContent = cardsSummaryTitle;
-
-	const cardsSummarySubtitleEl = sectionHeadEl.querySelector(
-		'.cards-summary__subtitle strong'
-	);
-	cardsSummarySubtitleEl.textContent = cardsSummarySubtitle;
 
 	const cardsSummaryDescriptionEl = sectionHeadEl.querySelector(
 		'.cards-summary__desc'
